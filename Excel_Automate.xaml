@@ -1,0 +1,947 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Excel_Automate_Service_Type" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="844.8,14390.4" sap2010:WorkflowViewState.IdRef="Excel_Automate_Service_Type_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:da="clr-namespace:DataTableExtensions.Aggregation;assembly=DataTableExtensions.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="28">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>DataTableExtensions.Aggregation</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>DataTableExtensions.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Callout.Activity</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Excel_Automate_Service_Type" sap:VirtualizedContainerService.HintSize="644,14225.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="file" />
+      <Variable x:TypeArguments="x:String" Name="sheet" />
+      <Variable x:TypeArguments="x:String" Name="current_date" />
+      <Variable x:TypeArguments="x:String" Name="excel_name" />
+      <Variable x:TypeArguments="sd:DataTable" Name="original_csv" />
+      <Variable x:TypeArguments="sd:DataTable" Name="InputDT2" />
+      <Variable x:TypeArguments="x:String" Name="TotalSum" />
+      <Variable x:TypeArguments="x:Object" Name="Total" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_Total" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Cloud" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Application_Orchestration" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Cloud_Backup" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Cloud_Eye" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Data_Encryption" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="602.4,14132.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Directory.GetFiles(&quot;C:\Excel_Automate\In_Process\&quot;,&quot;*.csv&quot;)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="567.2,13998.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="525.6,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[file]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[path.GetFileNameWithoutExtension(item).ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="525.6,13805.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" Visible="False" WorkbookPath="[&quot;C:\Excel_Automate\In_Process\&quot; + file + &quot;.csv&quot;]">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="492,13696" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelGetWorkbookSheet DisplayName="Get Workbook Sheet" sap:VirtualizedContainerService.HintSize="450.4,22.4" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[sheet]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="450.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[current_date]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[system.DateTime.now.ToString("dd.MMM.yyyy hh.mm")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="450.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[excel_name]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["(By Service Type) Huawei_Cloud_Billing for  " + current_date +".xlsx"]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:ExcelReadRange AddHeaders="True" DataTable="[original_csv]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="450.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" SheetName="[sheet]">
+                      <ui:ExcelReadRange.Range>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:ExcelReadRange.Range>
+                    </ui:ExcelReadRange>
+                    <ui:WriteRange AddHeaders="True" DataTable="[original_csv]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="450.4,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Updated" StartingCell="A1" WorkbookPath="[&quot;C:\Excel_Automate\Completed\&quot; + excel_name]" />
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="450.4,13084.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" Visible="False" WorkbookPath="[&quot;C:\Excel_Automate\Completed\&quot; + excel_name]">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,12975.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:ExcelWriteCell Cell="AE1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="375.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="Updated" Text="Test" />
+                            <ui:ExcelReadRange AddHeaders="True" DataTable="[InputDT2]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_8" SheetName="Updated">
+                              <ui:ExcelReadRange.Range>
+                                <InArgument x:TypeArguments="x:String">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                              </ui:ExcelReadRange.Range>
+                            </ui:ExcelReadRange>
+                            <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Resource Name" DataTable="[InputDT2]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="375.2,22.4" sap2010:WorkflowViewState.IdRef="SortDataTable_3" Order="Ascending" OutputDataTable="[InputDT2]" SortOrder="Ascending" />
+                            <Assign sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[InputDT2.Columns(23).ColumnName]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">Amount</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Sequence DisplayName="Data Table Elastic Cloud" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[Elastic_Cloud]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Elastic Cloud Server"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Elastic_Cloud]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="Elastic Cloud Server" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Elastic_Cloud.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="Elastic Cloud Server" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_9" Range="[&quot;W&quot;+ (Elastic_Cloud.Rows.Count+2).ToString]" SheetName="Elastic Cloud Server" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9" SheetName="Elastic Cloud Server">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_5" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Elastic_Cloud.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="Elastic Cloud Server" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_10" Range="[&quot;X&quot;+ (Elastic_Cloud.Rows.Count+2).ToString]" SheetName="Elastic Cloud Server" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Application Orchestration" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[Application_Orchestration]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Application Orchestration Service"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Application_Orchestration]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_7" SheetName="Application Orchestration" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Application_Orchestration.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="Application Orchestration" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_13" Range="[&quot;W&quot;+ (Application_Orchestration.Rows.Count+2).ToString]" SheetName="Application Orchestration" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_11" SheetName="Application Orchestration">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_7" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Application_Orchestration.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="Application Orchestration" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_14" Range="[&quot;X&quot;+ (Application_Orchestration.Rows.Count+2).ToString]" SheetName="Application Orchestration" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Cloud Backup and Recovery" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_8" OutputDataTable="[Cloud_Backup]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Cloud Backup and Recovery"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Cloud_Backup]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_8" SheetName="Cloud Backup and Recovery" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Cloud_Backup.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_19" SheetName="Cloud Backup and Recovery" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_15" Range="[&quot;W&quot;+ (Cloud_Backup.Rows.Count+2).ToString]" SheetName="Cloud Backup and Recovery" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_12" SheetName="Cloud Backup and Recovery">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_8" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Cloud_Backup.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_20" SheetName="Cloud Backup and Recovery" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_16" Range="[&quot;X&quot;+ (Cloud_Backup.Rows.Count+2).ToString]" SheetName="Cloud Backup and Recovery" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Cloud Eye" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_9" OutputDataTable="[Cloud_Eye]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Cloud Eye"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Elastic_Cloud]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_9" SheetName="Cloud_Eye" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Cloud_Eye.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_21" SheetName="Cloud_Eye" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_17" Range="[&quot;W&quot;+ (Cloud_Eye.Rows.Count+2).ToString]" SheetName="Cloud_Eye" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_13" SheetName="Cloud_Eye">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_9" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Cloud_Eye.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_22" SheetName="Cloud_Eye" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_18" Range="[&quot;X&quot;+ (Cloud_Eye.Rows.Count+2).ToString]" SheetName="Cloud_Eye" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Data Encryption" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_10" OutputDataTable="[Data_Encryption]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Data Encryption"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Data_Encryption]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_10" SheetName="Data_Encryption" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Data_Encryption.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_23" SheetName="Data_Encryption" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_19" Range="[&quot;W&quot;+ (Data_Encryption.Rows.Count+2).ToString]" SheetName="Data_Encryption" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_14" SheetName="Data_Encryption">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_10" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Data_Encryption.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_24" SheetName="Data_Encryption" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_20" Range="[&quot;X&quot;+ (Data_Encryption.Rows.Count+2).ToString]" SheetName="Data_Encryption" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Domain Name Service" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="DNS" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_11" OutputDataTable="[DNS]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Domain Name Service"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[DNS]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_11" SheetName="Domain Name Service" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (DNS.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_25" SheetName="Domain Name Service" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_21" Range="[&quot;W&quot;+ (DNS.Rows.Count+2).ToString]" SheetName="Domain Name Service" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_15" SheetName="Domain Name Service">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_11" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (DNS.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_26" SheetName="Domain Name Service" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_22" Range="[&quot;X&quot;+ (DNS.Rows.Count+2).ToString]" SheetName="Domain Name Service" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Elastic Volume" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_12" OutputDataTable="[Elastic_Volume]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Elastic Volume"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Elastic_Volume]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_12" SheetName="Elastic_Volume" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Elastic_Volume.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_27" SheetName="Elastic_Volume" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_23" Range="[&quot;W&quot;+ (Elastic_Volume.Rows.Count+2).ToString]" SheetName="Elastic_Volume" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_16" SheetName="Elastic_Volume">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_12" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Elastic_Volume.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_28" SheetName="Elastic_Volume" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_24" Range="[&quot;X&quot;+ (Elastic_Volume.Rows.Count+2).ToString]" SheetName="Elastic_Volume" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Image Management" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Image_Management" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_13" OutputDataTable="[Image_Management]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Image Management"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Image_Management]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_13" SheetName="Image_Management" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Image_Management.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_29" SheetName="Image_Management" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_25" Range="[&quot;W&quot;+ (Image_Management.Rows.Count+2).ToString]" SheetName="Image_Management" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_17" SheetName="Image_Management">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_13" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Image_Management.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_30" SheetName="Image_Management" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_26" Range="[&quot;X&quot;+ (Image_Management.Rows.Count+2).ToString]" SheetName="Image_Management" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Object Storage Service" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Image_Management" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Object_Storage" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_14" OutputDataTable="[Object_Storage]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Object Storage"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Object_Storage]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_14" SheetName="Object_Storage" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Object_Storage.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_31" SheetName="Object_Storage" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_27" Range="[&quot;W&quot;+ (Object_Storage.Rows.Count+2).ToString]" SheetName="Object_Storage" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_18" SheetName="Object_Storage">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_14" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Object_Storage.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_32" SheetName="Object_Storage" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_28" Range="[&quot;X&quot;+ (Object_Storage.Rows.Count+2).ToString]" SheetName="Object_Storage" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table ServiceStage" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Image_Management" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Object_Storage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="ServiceStage" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_15" OutputDataTable="[ServiceStage]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["ServiceStage"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[ServiceStage]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_15" SheetName="ServiceStage" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (ServiceStage.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_33" SheetName="ServiceStage" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_29" Range="[&quot;W&quot;+ (ServiceStage.Rows.Count+2).ToString]" SheetName="ServiceStage" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_19" SheetName="ServiceStage">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_15" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (ServiceStage.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_34" SheetName="ServiceStage" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_30" Range="[&quot;X&quot;+ (ServiceStage.Rows.Count+2).ToString]" SheetName="ServiceStage" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Simple Message" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Image_Management" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Object_Storage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="ServiceStage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Simple_Message" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_16" OutputDataTable="[Simple_Message]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Simple Message"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Simple_Message]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_16" SheetName="Simple_Message" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Simple_Message.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_35" SheetName="Simple_Message" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_31" Range="[&quot;W&quot;+ (Simple_Message.Rows.Count+2).ToString]" SheetName="Simple_Message" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_20" SheetName="Simple_Message">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_16" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Simple_Message.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_36" SheetName="Simple_Message" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_32" Range="[&quot;X&quot;+ (Simple_Message.Rows.Count+2).ToString]" SheetName="Simple_Message" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Virtual Private Cloud" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Image_Management" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Object_Storage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="ServiceStage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Simple_Message" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Virtual_Private_Cloud" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_17" OutputDataTable="[Virtual_Private_Cloud]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Virtual Private Cloud"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Virtual_Private_Cloud]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_17" SheetName="Virtual_Private_Cloud" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Virtual_Private_Cloud.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_37" SheetName="Virtual_Private_Cloud" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_33" Range="[&quot;W&quot;+ (Virtual_Private_Cloud.Rows.Count+2).ToString]" SheetName="Virtual_Private_Cloud" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_21" SheetName="Virtual_Private_Cloud">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_17" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Virtual_Private_Cloud.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_38" SheetName="Virtual_Private_Cloud" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_34" Range="[&quot;X&quot;+ (Virtual_Private_Cloud.Rows.Count+2).ToString]" SheetName="Virtual_Private_Cloud" />
+                            </Sequence>
+                            <Sequence DisplayName="Data Table Virtual Private Network" sap:VirtualizedContainerService.HintSize="375.2,924" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="sd:DataTable" Name="Elastic_Volume" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Image_Management" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Object_Storage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="ServiceStage" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Simple_Message" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Virtual_Private_Cloud" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="Virtual_Private_Network" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FilterDataTable DataTable="[InputDT2]" DisplayName="Filter Data Table CCC" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="FilterDataTable_18" OutputDataTable="[Virtual_Private_Network]" SelectColumnsMode="Remove">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Service Type"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Virtual Private Network"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Billing Mode"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">["Pay-per-Use"]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <InArgument x:TypeArguments="x:String">["Test"]</InArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                              </ui:FilterDataTable>
+                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[Virtual_Private_Network]" DisplayName="Write Range CCC" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_18" SheetName="Virtual_Private_Network" StartingCell="A1" />
+                              <ui:ExcelWriteCell Cell="[&quot;W&quot;+ (Virtual_Private_Network.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_39" SheetName="Virtual_Private_Network" Text="Total" />
+                              <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_35" Range="[&quot;W&quot;+ (Virtual_Private_Network.Rows.Count+2).ToString]" SheetName="Virtual_Private_Network" />
+                              <ui:ExcelReadRange AddHeaders="True" DataTable="[DT_Total]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_22" SheetName="Virtual_Private_Network">
+                                <ui:ExcelReadRange.Range>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </ui:ExcelReadRange.Range>
+                              </ui:ExcelReadRange>
+                              <da:SumActivity NullValue="{x:Null}" Select="{x:Null}" ColumnName="Amount" ConvertInputColumn="Double" DisplayName="Sum" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="SumActivity_18" InputTable="[DT_Total]" Result="[Total]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[TotalSum]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[Total.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ExcelWriteCell Cell="[&quot;X&quot;+ (Virtual_Private_Network.Rows.Count+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_40" SheetName="Virtual_Private_Network" Text="[TotalSum]" />
+                              <ui:ExcelSetRangeColor Color="[system.Drawing.Color.Yellow]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_36" Range="[&quot;X&quot;+ (Virtual_Private_Network.Rows.Count+2).ToString]" SheetName="Virtual_Private_Network" />
+                            </Sequence>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                    </ui:ExcelApplicationScope>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+            </ui:ExcelApplicationScope>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+  </Sequence>
+</Activity>

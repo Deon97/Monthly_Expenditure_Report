@@ -1,0 +1,69 @@
+{
+  "name": "Huawei Expenditure Process_V3",
+  "description": "Huawei Expenditure Process_V3",
+  "main": "Main.xaml",
+  "dependencies": {
+    "BalaReva.DataTable.Activities": "[3.0.1]",
+    "BalaReva.Excel.Activities": "[2020.3.3]",
+    "ShowDesktop.Activities": "[1.0.0]",
+    "System.Information.Activity": "[2.2.5]",
+    "UiPath.DesktopNotification.Activities": "[1.1.1]",
+    "UiPath.Excel.Activities": "[2.11.0-preview]",
+    "UiPath.Form.Activities": "[1.5.0]",
+    "UiPath.Mail.Activities": "[1.10.4]",
+    "UiPath.System.Activities": "[21.6.1-preview]",
+    "UiPath.UIAutomation.Activities": "[21.10.3]",
+    "UiPathTeam.DatatableConverter.Activities": "[1.0.1]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.6.0.0",
+  "projectVersion": "1.0.32",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "arguments": {
+    "input": [],
+    "output": []
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "6bbcab05-5b4b-475d-85aa-bdfb86c2ce98",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
